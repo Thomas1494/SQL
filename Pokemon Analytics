@@ -1,0 +1,44 @@
+In this 
+
+
+
+/*What are average, max, and min values in the data*/
+SELECT type_1, MAX(Speed)
+FROM pokemon 
+GROUP BY type_1;
+
+SELECT type_1, AVG(Sp_Def) 
+FROM pokemon 
+GROUP BY type_1;
+
+SELECT name, Generation, MIN(Attack) 
+FROM pokemon 
+GROUP BY Generation;
+
+/*What about those number per category in the data using HAVING)*/
+SELECT name, MAX(Speed) as max_speed 
+FROM pokemon
+GROUP BY speed 
+HAVING max_speed >100; 
+
+SELECT name, AVG(Sp_Def) as sp_def
+FROM pokemon
+GROUP BY sp_def 
+HAVING sp_def < 60;
+
+SELECT name, Generation, min(Attack) 
+FROM pokemon 
+GROUP BY attack 
+HAVING min(Attack) < 20;
+
+/*What ways are there to group the data values that don’t exist yet (using CASE) and What interesting ways are there to filter the data (using AND/OR)?*/
+
+SELECT name, Attack,
+    CASE
+        WHEN Attack > 150 THEN "SWEEPER"
+        WHEN Attack > 100 THEN "ABOVE_AVERAGE"
+        WHEN Attack > 75  THEN "MEDIOCRE"
+        ELSE "BELOW AVERAGE"
+    END as "Comp_battle"
+FROM pokemon WHERE Comp_battle='SWEEPER'
+AND sp_atk > 100 AND Speed > 90;
