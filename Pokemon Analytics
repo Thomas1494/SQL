@@ -1,38 +1,42 @@
-In this 
+#In this SQL code, I'm querying a database that's holding Pokemon data to answer questions about the data.
 
 
+Show the MAX Speed of each Pokemon type_1.
 
-/*What are average, max, and min values in the data*/
 SELECT type_1, MAX(Speed)
 FROM pokemon 
 GROUP BY type_1;
 
+What is the average special defense for each pokemon type?
 SELECT type_1, AVG(Sp_Def) 
 FROM pokemon 
 GROUP BY type_1;
 
+Which pokemon in each generation has the weakest attack strength?
 SELECT name, Generation, MIN(Attack) 
 FROM pokemon 
 GROUP BY Generation;
 
-/*What about those number per category in the data using HAVING)*/
+Which pokemon have the fastest speed in the game?
 SELECT name, MAX(Speed) as max_speed 
 FROM pokemon
 GROUP BY speed 
 HAVING max_speed >100; 
 
+Which pokemon have the weakest special defense?
 SELECT name, AVG(Sp_Def) as sp_def
 FROM pokemon
 GROUP BY sp_def 
 HAVING sp_def < 60;
 
+Which pokemon have the weakest attack from each generation?
 SELECT name, Generation, min(Attack) 
 FROM pokemon 
 GROUP BY attack 
-HAVING min(Attack) < 20;
+HAVING min(Attack) < 50;
 
-/*What ways are there to group the data values that don’t exist yet (using CASE) and What interesting ways are there to filter the data (using AND/OR)?*/
 
+Which pokemon would be the best for attacking in competitve battle?
 SELECT name, Attack,
     CASE
         WHEN Attack > 150 THEN "SWEEPER"
