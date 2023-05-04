@@ -1,0 +1,41 @@
+In this project I created a few tables regarding famous singers and answered several questions about them and their relationships using Relational Queries.
+
+CREATE TABLE singers (id INTEGER PRIMARY KEY AUTOINCREMENT, stagename TEXT, age INTEGER);
+
+INSERT INTO singers (stagename, age) VALUES ("The Weeknd", "33");
+INSERT INTO singers (stagename, age) VALUES ("Bruno Mars", "37");
+INSERT INTO singers (stagename, age) VALUES ("Anderson .Paak", "37");
+INSERT INTO singers (stagename, age) VALUES ("Lana Del Rey", "37");
+INSERT INTO singers (stagename, age) VALUES ("Rihanna", "35");
+INSERT INTO singers (stagename, age) VALUES ("SZA", "33");
+INSERT INTO singers (stagename, age) VALUES ("Brent Faiyaz", "27");
+
+CREATE TABLE songs ( id INTEGER PRIMARY KEY AUTOINCREMENT, singer_id INTEGER, songname TEXT);
+
+INSERT INTO songs (singer_id, songname) VALUES (1, "The Morning");
+INSERT INTO songs (singer_id, songname) VALUES (1, "Lust For Life");
+INSERT INTO songs (singer_id, songname) VALUES (2, "Talking to the Moon");
+INSERT INTO songs (singer_id, songname) VALUES (2,"Smokin Out The Window");
+INSERT INTO songs (singer_id, songname) VALUES (3, "Love's Train");
+INSERT INTO songs (singer_id, songname) VALUES (3,"Smokin Out The Window");
+INSERT INTO songs (singer_id, songname) VALUES (4, "Lust For Life");
+INSERT INTO songs (singer_id, songname) VALUES (5, "Rude Boy");
+INSERT INTO songs (singer_id, songname) VALUES (6, "Love Galore");
+INSERT INTO songs (singer_id, songname) VALUES (7, "Invite Me");
+
+CREATE TABLE dynamic_duo (id INTEGER PRIMARY KEY AUTOINCREMENT, singer1_id INTEGER, singer2_id INTEGER);
+
+INSERT INTO dynamic_duo (singer1_id, singer2_id) VALUES (2,3);
+INSERT INTO dynamic_duo (singer1_id, singer2_id) VALUES (1,4);
+
+SELECT s.stagename, m.songname 
+FROM singers s 
+JOIN songs m on s.id = m.singer_id;
+
+SELECT a.stagename, b.stagename 
+FROM dynamic_duo 
+JOIN singers a 
+ON a.id=dynamic_duo.singer1_id 
+JOIN singers b
+ON b.id = dynamic_duo.singer2_id;
+
