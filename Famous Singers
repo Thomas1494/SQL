@@ -1,4 +1,4 @@
-In this project I created a few tables regarding famous singers and answered several questions about them and their relationships using Relational Queries.
+In this project I created a few tables regarding famous singers and answered several questions about the data using Relational Queries.
 
 CREATE TABLE singers (id INTEGER PRIMARY KEY AUTOINCREMENT, stagename TEXT, age INTEGER);
 
