@@ -58,5 +58,15 @@ Select artist_name, duration_ms
 FROM BIT_DB.spotifydata
 ORDER BY duration_ms desc
 
+--What's the average popularity for the artists and label them "TopStar" if the average popularity is over 90
+WITH popularity_average_CTE AS (
+SELECT s.artist_name, avg(S.popularity) as average_popularity
+FROM SpotifyData s
+GROUP BY s.artist_name)
+
+SELECT artist_name, average_popularity, 'Top Star' as tag
+FROM Popularity_average_cte
+WHERE average_popularity >= 90
+
 
 
